@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/Amol2108/devops-microservices-platform.git'
-            }
-        }
+    
 
         stage('Build Backend Image') {
             steps {

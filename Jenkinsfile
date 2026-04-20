@@ -3,6 +3,18 @@ pipeline {
 
     stages {
 
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Amol2108/devops-microservices-platform.git'
+            }
+        }
+
         stage('Build Backend Image') {
             steps {
                 sh 'docker build -t ironman21/backend-app:v1 ./app/backend'

@@ -1,3 +1,15 @@
+terraform {
+  backend "s3" {
+    bucket         = "devops-terraform-state-ironman21"
+    key            = "devops-project/terraform.tfstate"
+    region         = "ap-south-1"
+    dynamodb_table = "terraform-lock-table"
+  }
+}
+
+provider "aws" {
+  region = "ap-south-1"
+}
 provider "aws" {
     region= "ap-south-1"
 }

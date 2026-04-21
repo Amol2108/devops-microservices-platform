@@ -97,7 +97,7 @@ systemctl enable docker
 docker pull ironman21/backend-app:v1
 docker pull ironman21/frontend-app:v1
 
-docker network inspect my-netwrok >/dev/null 2>&1 || docker network create my-network
+docker network inspect my-network >/dev/null 2>&1 || docker network create my-network
 
 docker rm -f backend-container || true
 docker run -d --restart always -p 5000:5000 --name backend-container --network my-network ironman21/backend-app:v1

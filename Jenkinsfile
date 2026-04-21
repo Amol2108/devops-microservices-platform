@@ -15,6 +15,14 @@ pipeline {
             }
         }
 
+        stage('Terraform Init') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+
         stage('Build Backend Image') {
             steps {
                 sh 'docker build -t ironman21/backend-app:v1 ./app/backend'

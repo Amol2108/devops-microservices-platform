@@ -119,7 +119,7 @@ docker run -d --restart always -p 3000:3000 --name frontend-container --network 
 EOF
 
   tags = {
-    Name = "devops-${var-ec2}-ec2"
+    Name = "devops-${var.env}-ec2"
   }
 }
 

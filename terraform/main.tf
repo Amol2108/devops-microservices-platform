@@ -1,3 +1,7 @@
+variable "env" {
+  description = "Environment name"
+  type        = string
+}
 terraform {
   backend "s3" {
     bucket         = "devops-terraform-state-ironman21"
@@ -88,7 +92,7 @@ resource "aws_security_group" "devops-sg"{
 }
 resource "aws_instance" "devops_ec2" {
   ami           = "ami-048f4445314bcaa09"
-  instance_type = "t3.micro"
+  instance_type = var.env == "prod" ? "t3.micro" : "t2.micro"
 
   subnet_id = aws_subnet.public_subnet.id
   associate_public_ip_address = true
@@ -115,7 +119,7 @@ docker run -d --restart always -p 3000:3000 --name frontend-container --network 
 EOF
 
   tags = {
-    Name = "devops-ec2"
+    Name = "devops-${var-ec2}-ec2"
   }
 }
 

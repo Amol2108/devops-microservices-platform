@@ -94,7 +94,7 @@ resource "aws_security_group" "devops-sg"{
 }
 resource "aws_instance" "devops_ec2" {
   ami           = "ami-048f4445314bcaa09"
-  instance_type = var.env == "prod" ? "t3.micro" : "t2.micro"
+  instance_type = "t3.micro"
 
   subnet_id = aws_subnet.public_subnet.id
   associate_public_ip_address = true
